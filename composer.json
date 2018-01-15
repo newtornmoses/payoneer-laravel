@@ -13,6 +13,7 @@
         "illuminate/support": "^5.0",
         "guzzlehttp/guzzle": "^6.1"
     },
+    "minimum-stability": "stable",
     "autoload": {
         "classmap": [
             "src/migrations"
