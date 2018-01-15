@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matt
- * Date: 12/13/14
- * Time: 11:50 AM
- */
 
-namespace koizoinno\LaravelPayoneer\API;
+namespace payoneer\LaravelPayoneer\API;
 
-
-use koizoinno\LaravelPayoneer\PayoneerAPI;
+use payoneer\LaravelPayoneer\PayoneerAPI;
 
 /**
  * Class PartnerDetails
- * @package koizoinno\LaravelPayoneer\API
+ * @package payoneer\LaravelPayoneer\API
  */
 class PartnerDetails {
 

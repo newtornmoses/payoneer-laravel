@@ -1,32 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matt
- * Date: 12/11/14
- * Time: 11:23 PM
- */
 
-namespace koizoinno\LaravelPayoneer;
+namespace payoneer\LaravelPayoneer;
 
-
-use koizoinno\LaravelPayoneer\Requests\BasicPaymentRequest;
-use koizoinno\LaravelPayoneer\Requests\BasicRequest;
-use koizoinno\LaravelPayoneer\Requests\ChangePayeeIdRequest;
-use koizoinno\LaravelPayoneer\Requests\GetPayeesReportRequest;
-use koizoinno\LaravelPayoneer\Requests\GetPaymentStatusRequest;
-use koizoinno\LaravelPayoneer\Requests\PayeeRequest;
-use koizoinno\LaravelPayoneer\Requests\PayeeSignupAutoPopulationRequest;
-use koizoinno\LaravelPayoneer\Requests\PayeeSignupRequest;
-use koizoinno\LaravelPayoneer\Requests\PerformPayoutPaymentRequest;
-use koizoinno\LaravelPayoneer\Services\BaseService;
+use payoneer\LaravelPayoneer\Requests\BasicPaymentRequest;
+use payoneer\LaravelPayoneer\Requests\BasicRequest;
+use payoneer\LaravelPayoneer\Requests\ChangePayeeIdRequest;
+use payoneer\LaravelPayoneer\Requests\GetPayeesReportRequest;
+use payoneer\LaravelPayoneer\Requests\GetPaymentStatusRequest;
+use payoneer\LaravelPayoneer\Requests\PayeeRequest;
+use payoneer\LaravelPayoneer\Requests\PayeeSignupAutoPopulationRequest;
+use payoneer\LaravelPayoneer\Requests\PayeeSignupRequest;
+use payoneer\LaravelPayoneer\Requests\PerformPayoutPaymentRequest;
+use payoneer\LaravelPayoneer\Services\BaseService;
 use SimpleXMLElement;
 
 /**
  * Class PayoneerAPI
- * @package koizoinno\LaravelPayoneer
+ * @package payoneer\LaravelPayoneer
  */
-class PayoneerAPI extends BaseService {
-
+class PayoneerAPI extends BaseService
+{
     const PAYOUT_CARD = 'PrepaidCard';
     const PAYOUT_DEPOSIT = 'DirectDeposit';
     const PAYOUT_ACH = 'iACH';
@@ -79,7 +72,7 @@ class PayoneerAPI extends BaseService {
          */
 
         $response = html_entity_decode((string)$response->getBody());
-        $xml      = simplexml_load_string($response);
+        $xml = simplexml_load_string($response);
         return $this->xmlToArray($xml);
 
     }
@@ -140,7 +133,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getPaymentStatus($payeeId, $paymentId)
     {
-        $request  = new GetPaymentStatusRequest($payeeId, $paymentId);
+        $request = new GetPaymentStatusRequest($payeeId, $paymentId);
         $response = $this->call('GetPaymentStatus', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -153,7 +146,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getAccountDetails()
     {
-        $request  = new BasicRequest();
+        $request = new BasicRequest();
         $response = $this->call('GetAccountDetails', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -168,7 +161,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getPayeeDetails($payeeId)
     {
-        $request  = new PayeeRequest($payeeId);
+        $request = new PayeeRequest($payeeId);
         $response = $this->call('GetPayeeDetails', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -184,7 +177,7 @@ class PayoneerAPI extends BaseService {
      */
     public function changePayeeId($oldId, $newId)
     {
-        $request  = new ChangePayeeIdRequest($oldId, $newId);
+        $request = new ChangePayeeIdRequest($oldId, $newId);
         $response = $this->call('ChangePayeeID', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -201,7 +194,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getPayeesReport($startDate, $endDate)
     {
-        $request  = new GetPayeesReportRequest($startDate, $endDate);
+        $request = new GetPayeesReportRequest($startDate, $endDate);
         $response = $this->call('GetPayeesReport', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -215,7 +208,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getSinglePayeeReport($payeeId)
     {
-        $request  = new PayeeRequest($payeeId);
+        $request = new PayeeRequest($payeeId);
         $response = $this->call('GetSinglePayeeReport', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -230,7 +223,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getUnclaimedPayments()
     {
-        $request  = new BasicRequest();
+        $request = new BasicRequest();
         $response = $this->call('GetUnclaimedPaymentsXML', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);
@@ -244,7 +237,7 @@ class PayoneerAPI extends BaseService {
      */
     public function getUnclaimedPaymentsCSV()
     {
-        $request  = new BasicRequest();
+        $request = new BasicRequest();
         $response = $this->call('GetUnclaimedPaymentsCSV', $request);
         return $response->getBody()->getContents();
     }
@@ -258,7 +251,7 @@ class PayoneerAPI extends BaseService {
      */
     public function cancelPayment($paymentId)
     {
-        $request  = new BasicPaymentRequest($paymentId);
+        $request = new BasicPaymentRequest($paymentId);
         $response = $this->call('CancelPayment', $request);
         $xml = simplexml_load_string($response->getBody()->getContents());
         return $this->xmlToArray($xml);

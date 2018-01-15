@@ -1,17 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matt
- * Date: 12/11/14
- * Time: 11:46 PM
- */
 
-namespace koizoinno\LaravelPayoneer;
-
+namespace payoneer\LaravelPayoneer;
 
 class PayoneerConfig
 {
-
     /**
      * @var
      */
@@ -47,12 +39,12 @@ class PayoneerConfig
         $this->partnerId = $partnerId;
     }
 
-    public function getParameterArray() {
+    public function getParameterArray()
+    {
         return [
             'p1' => $this->apiUser,
             'p2' => $this->apiPassword,
-            'p3' => $this->partnerId
+            'p3' => $this->partnerId,
         ];
     }
-
-} 
+}

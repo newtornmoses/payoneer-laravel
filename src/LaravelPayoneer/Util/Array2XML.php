@@ -1,42 +1,11 @@
 <?php
-/**
- * Array2XML: A class to convert array in PHP to XML
- * It also takes into account attributes names unlike SimpleXML in PHP
- * It returns the XML in form of DOMDocument class for further manipulation.
- * It throws exception if the tag name or attribute name has illegal chars.
- *
- * Author : Lalit Patel
- * Website: http://www.lalit.org/lab/convert-php-array-to-xml-with-attributes
- * License: Apache License 2.0
- *          http://www.apache.org/licenses/LICENSE-2.0
- * Version: 0.1 (10 July 2011)
- * Version: 0.2 (16 August 2011)
- *          - replaced htmlentities() with htmlspecialchars() (Thanks to Liel Dulev)
- *          - fixed a edge case where root node has a false/null/0 value. (Thanks to Liel Dulev)
- * Version: 0.3 (22 August 2011)
- *          - fixed tag sanitize regex which didn't allow tagnames with single character.
- * Version: 0.4 (18 September 2011)
- *          - Added support for CDATA section using @cdata instead of @value.
- * Version: 0.5 (07 December 2011)
- *          - Changed logic to check numeric array indices not starting from 0.
- * Version: 0.6 (04 March 2012)
- *          - Code now doesn't @cdata to be placed in an empty array
- * Version: 0.7 (24 March 2012)
- *          - Reverted to version 0.5
- * Version: 0.8 (02 May 2012)
- *          - Removed htmlspecialchars() before adding to text node or attributes.
- *
- * Usage:
- *       $xml = Array2XML::createXML('root_node_name', $php_array);
- *       echo $xml->saveXML();
- */
 
-namespace koizoinno\LaravelPayoneer\Util;
+namespace payoneer\LaravelPayoneer\Util;
 
 use DOMDocument;
 
-class Array2XML {
-
+class Array2XML
+{
     private static $xml = null;
     private static $encoding = 'UTF-8';
 
@@ -48,18 +17,20 @@ class Array2XML {
      */
     public static function init($version = '1.0', $encoding = 'UTF-8', $format_output = true)
     {
-        self::$xml               = new DomDocument($version, $encoding);
+        self::$xml = new DomDocument($version, $encoding);
         self::$xml->formatOutput = $format_output;
-        self::$encoding          = $encoding;
+        self::$encoding = $encoding;
     }
 
     /**
      * Convert an Array to XML
-     * @param string $node_name - name of the root node to be converted
-     * @param array  $arr       - aray to be converterd
-     * @return DomDocument
+     *
+     * @param $node_name
+     * @param array $arr
+     * @return null
+     * @throws Exception
      */
-    public static function &createXML($node_name, $arr = array())
+    public static function &createXML($node_name, $arr = [])
     {
         $xml = self::getXMLRoot();
         $xml->appendChild(self::convert($node_name, $arr));
@@ -71,15 +42,14 @@ class Array2XML {
     /**
      * Convert an Array to XML
      * @param string $node_name - name of the root node to be converted
-     * @param array  $arr       - aray to be converterd
+     * @param array $arr - aray to be converterd
      * @throws Exception
      * @return DOMNode
      */
-    private static function &convert($node_name, $arr = array())
+    private static function &convert($node_name, $arr = [])
     {
-
         //print_arr($node_name);
-        $xml  = self::getXMLRoot();
+        $xml = self::getXMLRoot();
         $node = $xml->createElement($node_name);
 
         if (is_array($arr)) {

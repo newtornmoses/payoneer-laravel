@@ -6,15 +6,15 @@
  * Time: 8:21 PM
  */
 
-namespace koizoinno\LaravelPayoneer\Requests;
+namespace payoneer\LaravelPayoneer\Requests;
 
 
-use koizoinno\LaravelPayoneer\Contracts\RequestInterface;
-use koizoinno\LaravelPayoneer\PayoneerAPI;
+use payoneer\LaravelPayoneer\Contracts\RequestInterface;
+use payoneer\LaravelPayoneer\PayoneerAPI;
 
 /**
  * Class PayeeSignupRequest
- * @package koizoinno\LaravelPayoneer\Requests
+ * @package payoneer\LaravelPayoneer\Requests
  */
 class PayeeSignupRequest extends BaseRequest implements RequestInterface {
 

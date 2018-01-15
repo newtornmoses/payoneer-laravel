@@ -1,9 +1,11 @@
-<?php namespace koizoinno\LaravelPayoneer;
+<?php
+
+namespace payoneer\LaravelPayoneer;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelPayoneerServiceProvider extends ServiceProvider {
-
+class LaravelPayoneerServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -18,7 +20,7 @@ class LaravelPayoneerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('koizoinno/laravel-payoneer');
+        $this->package('payoneer/laravel-payoneer');
     }
 
     /**
@@ -38,7 +40,6 @@ class LaravelPayoneerServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array();
+        return [];
     }
-
 }

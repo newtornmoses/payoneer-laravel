@@ -1,20 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matt
- * Date: 12/12/14
- * Time: 8:18 PM
- */
 
-namespace koizoinno\LaravelPayoneer\Requests;
-
+namespace payoneer\LaravelPayoneer\Requests;
 
 /**
  * Class BaseRequest
- * @package koizoinno\LaravelPayoneer\Requests
+ * @package payoneer\LaravelPayoneer\Requests
  */
-abstract class BaseRequest {
-
+abstract class BaseRequest
+{
     /**
      * @var
      */
@@ -27,5 +20,4 @@ abstract class BaseRequest {
     {
         return $this->parameters;
     }
-
-} 
+}

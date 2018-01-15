@@ -1,25 +1,23 @@
 {
-    "name": "dmitry-kuchura/payoneer-laravel",
-    "description": "Payoneer API Laravel",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Dmitry Kuchura",
-            "email": "kuchura.d@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "^5.0",
-        "guzzlehttp/guzzle": "^6.1"
-    },
-    "minimum-stability": "stable",
-    "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
-        "psr-0": {
-            "koizoinno\\LaravelPayoneer\\": "src/"
-        }
+  "name": "Payoneer API Laravel",
+  "description": "Payoneer API Laravel",
+  "license": "MIT",
+  "version": "0.10",
+  "authors": [
+    {
+      "name": "Dmitry Kuchura",
+      "email": "kuchura.d@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/migrations"
+    ],
+    "psr-0": {
+      "payoneer\\LaravelPayoneer\\": "src/"
+    }
+  }
 }
