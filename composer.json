@@ -1,10 +1,10 @@
 {
-    "name": "viralstyle/laravel-payoneer",
-    "description": "Implementation of Payoneer API.",
+    "name": "dmitry-kuchura/payoneer-laravel",
+    "description": "Payoneer API Laravel",
     "authors": [
         {
-            "name": "Matt Snyder",
-            "email": "matt@obscurelogic.com"
+            "name": "Dmitry Kuchura",
+            "email": "kuchura.d@gmail.com"
         }
     ],
     "require": {
