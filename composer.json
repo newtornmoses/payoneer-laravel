@@ -1,6 +1,7 @@
 {
     "name": "dmitry-kuchura/payoneer-laravel",
     "description": "Payoneer API Laravel",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dmitry Kuchura",
@@ -20,5 +21,4 @@
             "koizoinno\\LaravelPayoneer\\": "src/"
         }
     },
-    "minimum-stability": "dev"
 }
