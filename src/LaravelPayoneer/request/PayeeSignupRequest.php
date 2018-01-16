@@ -1,25 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: matt
- * Date: 12/12/14
- * Time: 8:21 PM
- */
 
-namespace payoneer\LaravelPayoneer\Requests;
+namespace payoneer\request;
 
-
-use payoneer\LaravelPayoneer\Contracts\RequestInterface;
-use payoneer\LaravelPayoneer\PayoneerAPI;
+use payoneer\ApiAbstract;
 
 /**
  * Class PayeeSignupRequest
- * @package payoneer\LaravelPayoneer\Requests
+ * @package payoneer\request
  */
-class PayeeSignupRequest extends BaseRequest implements RequestInterface {
-
+class PayeeSignupRequest extends RequestAbstract implements RequestInterface {
     /**
-     * @param int    $payeeId
+     * @param string $payeeId
      * @param        $sessionId
      * @param        $redirectUrl
      * @param        $redirectTime
@@ -33,16 +24,16 @@ class PayeeSignupRequest extends BaseRequest implements RequestInterface {
         $redirectUrl,
         $sessionId = '',
         $redirectTime = '10',
-        $testAccount = 'false',
+        $testAccount = 'false', //Auto approve account or not
         $xmlResponse = 'true',
         array $payoutMethods = array(
-            PayoneerAPI::PAYOUT_CARD,
-            PayoneerAPI::PAYOUT_ACH,
-// TODO Figure out why enabling the two options below causes an 'Unauthorized action' error.
-//            PayoneerAPI::PAYOUT_CHECK,
-//            PayoneerAPI::PAYOUT_DEPOSIT
+            ApiAbstract::PAYOUT_CARD,
+            ApiAbstract::PAYOUT_ACH,
+            // TODO Figure out why enabling the two options below causes an 'Unauthorized action' error.
+           // ApiAbstract::PAYOUT_CHECK,
+           // ApiAbstract::PAYOUT_DEPOSIT
         ),
-        $achMode = PayoneerAPI::ACH_MODE_REGULAR
+        $achMode = ApiAbstract::ACH_MODE_REGULAR
     ) {
         $this->parameters['p4']  = $payeeId;
         $this->parameters['p5']  = $sessionId;

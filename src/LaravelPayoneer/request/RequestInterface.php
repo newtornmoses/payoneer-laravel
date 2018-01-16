@@ -1,15 +1,15 @@
 <?php
 
-namespace payoneer\LaravelPayoneer\Contracts;
+namespace payoneer\request;
 
 /**
  * Interface RequestInterface
- * @package payoneer\LaravelPayoneer\Contracts
+ * @package payoneer
  */
 interface RequestInterface {
-
+    
     /**
      * @return array
      */
     public function getParameterArray();
-} 
+}
