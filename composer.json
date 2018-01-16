@@ -2,7 +2,7 @@
   "name": "dmitry-kuchura/payoneer-laravel",
   "description": "Payoneer API Laravel",
   "license": "MIT",
-  "version": "0.1",
+  "version": "0.1.1",
   "authors": [
     {
       "name": "Dmitry Kuchura",
@@ -13,9 +13,6 @@
     "php": ">=5.4.0"
   },
   "autoload": {
-    "classmap": [
-      "src/migrations"
-    ],
     "psr-0": {
       "payoneer\\LaravelPayoneer\\": "src/"
     }
